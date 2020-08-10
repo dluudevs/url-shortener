@@ -1,3 +1,4 @@
+require('./mongoose.js')
 const express = require('express')
 const bodyParser = require('body-parser')
 const URL = require('url').URL
@@ -20,10 +21,7 @@ app.post('/api/shorturl/new', jsonParser, (req, res) => {
 
   if (!isUrlValid){
     return res.send({ error: "Invalid URL"})
-  } else {
-    console.log('URL is valid!')
-  }
-
+  } 
   // parse the body
   // check if the URL is valid
 
