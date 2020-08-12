@@ -8,8 +8,8 @@ const urlSchema = mongoose.Schema(
       // Validator Docs
       required: true
     },
-    _id: {
-      type: 'number',
+    hash: {
+      type: 'string',
       required: true
     }
   }
