@@ -21,6 +21,7 @@ app.post('/api/shorturl/new', jsonParser, async (req, res) => {
   try {
     await dnsPromises.lookup(parsedUrl)
   } catch (e) {
+    // will exit route handler function and not run below code
     return res.send({ url: "Invalid URL"})
   }
   
@@ -40,9 +41,18 @@ app.post('/api/shorturl/new', jsonParser, async (req, res) => {
       // if url exists, send back url
       res.send({url: `${shortUrl}/${existingUrl.hash}`})
     }
-  } catch (error){
+  } catch (e){
     // status 500 for when there is an error communicating with the server
-    res.status(500).send(error)
+    res.status(500).send(e)
+  }
+})
+
+app.get('/shorturl/:id', async (req, res) => {
+  try {
+    const { url } = await UrlModel.findOne({ hash: req.params.id })
+    res.redirect(url)
+  } catch (e) {
+    res.status(500).send(e)
   }
 })
 
