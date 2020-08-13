@@ -1,0 +1,31 @@
+{{!-- HBS is template engine for handlebars, handlebars is not compatible with express but HBS is --}}
+{{!-- HBS is just HTML with additional features for rendering content dynamically --}}
+{{!-- index.hbs will replace index.html once views has been set via express.set --}}
+{{!-- HBS allows us to reuse markup and render content dynamically through partials --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timestamp Microservice</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css"> 
+</head>
+<body>
+  <div class="main">
+    {{>header}}
+    <h3>Get your date in UTC and Unix!</h3>
+    <p>Input a date (eg., 2020-01-01) or <a href="https://en.wikipedia.org/wiki/Unix_time">Unix time</a></p>
+    <form id="form-date">
+      <input id="input-date" placeholder="Enter a date">
+      <button>Create Date</button>
+    </form>
+
+    <p id="message-utc"></p>
+    <p id="message-unix"></p>
+  </div>
+  {{>footer}}
+  {{!-- reference files as if index.hbs is inside of public as all static assets are set to serve from that folder --}}
+  <script src="js/app.js"></script>
+</body>
+</html>

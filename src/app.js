@@ -4,10 +4,26 @@ const bodyParser = require('body-parser')
 const UrlModel = require('./models/url')
 const dnsPromises = require('dns').promises
 const { default: ShortUniqueId } = require('short-unique-id')
+const hbs = require('hbs')
+const path = require('path')
 
 const app = express()
 const jsonParser = bodyParser.json()
 const port = process.env.PORT || 3000
+
+const publicPath = path.join(__dirname, '../public')
+const viewsPath = path.join(__dirname, '/templates/views')
+const partialsPath = path.join(__dirname, '/templates/partials')
+
+
+// for css and assets
+app.set(express.static(publicPath))
+// set viewengine to use HBS
+app.set('view engine', 'hbs')
+// render method will look for views in this path
+app.set('views', viewsPath)
+// register partials path so they can be referenced in hbs files
+hbs.registerPartials(partialsPath)
 
 app.post('/api/shorturl/new', jsonParser, async (req, res) => {
   const url = req.body.url
@@ -22,7 +38,7 @@ app.post('/api/shorturl/new', jsonParser, async (req, res) => {
     await dnsPromises.lookup(parsedUrl)
   } catch (e) {
     // will exit route handler function and not run below code
-    return res.send({ url: "Invalid URL"})
+    return res.send({ error: "Invalid URL"})
   }
   
   // interact with database

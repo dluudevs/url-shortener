@@ -1,0 +1,86 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body { 
+  color: #333333;
+  font-family: arial;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 16px;
+  
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a, footer, .date {
+  color: #333333b0;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+h1, h3, p {
+  margin: 0;
+}
+
+h1, h3, form {
+  margin-bottom: 12px;
+}
+
+.about-heading {
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+a {
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+a:hover {
+  cursor: pointer;
+  border-bottom: 1px solid #333333b0;
+}
+
+.main a {
+  text-decoration: underline
+}
+
+.main a:hover {
+  border-bottom: none;
+  opacity: 0.8;
+}
+
+header {
+  margin-bottom: 40px;
+}
+
+header a {
+  margin-right: 8px;
+}
+
+#input-date {
+  width: 200px;
+  margin-right: 4px;
+}
+
+footer { 
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #333333b0;
+}
+
+.portrait {
+  display: block;
+  max-width: 250px;
+  margin-bottom: 12px;
+}
