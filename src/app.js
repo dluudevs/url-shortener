@@ -12,18 +12,28 @@ const jsonParser = bodyParser.json()
 const port = process.env.PORT || 3000
 
 const publicPath = path.join(__dirname, '../public')
-const viewsPath = path.join(__dirname, '/templates/views')
-const partialsPath = path.join(__dirname, '/templates/partials')
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
 
 
-// for css and assets
-app.set(express.static(publicPath))
-// set viewengine to use HBS
+// for css and assets - use method to register middleware
+app.use(express.static(publicPath))
+// set viewengine to use HBS - set method registers properties (notice the pair)
 app.set('view engine', 'hbs')
 // render method will look for views in this path
 app.set('views', viewsPath)
 // register partials path so they can be referenced in hbs files
 hbs.registerPartials(partialsPath)
+
+app.get('/', (req, res) => {
+  res.render('index', {
+    title: 'URL Shortener'
+  })
+})
+
+app.get('/about', (req, res) => {
+  res.render('about', { title: 'About'})
+})
 
 app.post('/api/shorturl/new', jsonParser, async (req, res) => {
   const url = req.body.url

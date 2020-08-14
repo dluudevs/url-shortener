@@ -1,3 +1,12 @@
+/* Unopinonated Styles */
+.round-border {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+/* Element specific styles */
+
 html {
   box-sizing: border-box;
 }
@@ -29,7 +38,7 @@ h1, h3, p {
   margin: 0;
 }
 
-h1, h3, form {
+h1, h3 {
   margin-bottom: 12px;
 }
 
@@ -68,9 +77,57 @@ header a {
   margin-right: 8px;
 }
 
-#input-date {
-  width: 200px;
-  margin-right: 4px;
+.form-container {
+  padding: 16px;
+  background-color: #0b1736;
+}
+
+.form-container button {
+  flex-grow: 0.25;
+  font-size: 14px;
+}
+
+.form-container button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+#form-url {
+  /* padding: 0 12px; */
+  display: flex;
+  justify-content: space-between;
+}
+
+#input-url {
+  width: 250px;
+  flex-grow: 0.7;
+  font-size: 14px;
+}
+
+.message-url {
+  background-color: white;
+  margin-top: 16px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 35px;
+}
+
+.short-url-container {
+  flex-grow: 0.3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.short-url {
+  flex-grow: 0.6;
+}
+
+#copy-button {
+  flex-grow: 0.1;
+  padding: 4px;
 }
 
 footer { 

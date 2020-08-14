@@ -8,21 +8,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timestamp Microservice</title>
+  <title>URL Shortener</title>
   <link rel="stylesheet" type="text/css" href="css/styles.css"> 
 </head>
 <body>
   <div class="main">
     {{>header}}
-    <h3>Get your date in UTC and Unix!</h3>
-    <p>Input a date (eg., 2020-01-01) or <a href="https://en.wikipedia.org/wiki/Unix_time">Unix time</a></p>
-    <form id="form-date">
-      <input id="input-date" placeholder="Enter a date">
-      <button>Create Date</button>
-    </form>
+    <p>Input a URL and watch it magically become shorter!</p>
+    <div class="form-container">
+      <form id="form-url">
+        <input id="input-url" class="round-border" placeholder="Shorten URL">
+        <button class="round-border">Shorten!</button>
+      </form>
+      <p class="message-url round-border">
+        <span class="original-url">test</span>
+        <span class="short-url-container">
+          <span class="short-url"><a>test link</a></span>
+          <button id="copy-button" class="round-border">Copy</button>
+        </span>
+      </p>
+    </div>
 
-    <p id="message-utc"></p>
-    <p id="message-unix"></p>
   </div>
   {{>footer}}
   {{!-- reference files as if index.hbs is inside of public as all static assets are set to serve from that folder --}}
