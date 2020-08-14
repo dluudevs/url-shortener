@@ -1,14 +1,21 @@
-const date = document.querySelector('#input-date')
-const form = document.querySelector('#form-date')
-const utcMessage = document.querySelector('#message-utc')
-const unixMessage = document.querySelector('#message-unix')
+const url = document.querySelector('#input-url')
+const form = document.querySelector('#form-url')
+const messageUrl = document.querySelector('.message-url')
+const originalUrl = document.querySelector('.original-url')
+const shortUrl = document.querySelector('.short-url a')
+const copyButton = document.querySelector('#copy-button')
+
 
 form.addEventListener('submit', (e) => {
+  const body = JSON.stringify({ url: url.value })
+  
   e.preventDefault()
-  fetch(`/api/timestamp/${date.value}`).then(data => data.json())
+  fetch('/api/shorturl/new', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body })
+    .then(data => data.json())
     .then(res => {
-      utcMessage.innerHTML = `Your timestamp in UTC is: <span class="date"> ${res.utc}. </span>`
-      unixMessage.innerHTML = `In Unix, your timestamp is: <span class="date"> ${res.unix}. </span>`
+      originalUrl.innerHTML = url.value
+      shortUrl.innerHTML = res.url
+      messageUrl.style.display = 'flex'
     })
 })
 

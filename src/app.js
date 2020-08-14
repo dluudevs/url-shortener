@@ -37,7 +37,6 @@ app.get('/about', (req, res) => {
 
 app.post('/api/shorturl/new', jsonParser, async (req, res) => {
   const url = req.body.url
-
   // parse string to get hostname
   let parsedUrl = url.match('https') ? url.replace('https://', '') : url.replace('http://', '')
   const urlIndex = parsedUrl.indexOf('/')

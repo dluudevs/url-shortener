@@ -108,7 +108,7 @@ header a {
   background-color: white;
   margin-top: 16px;
   flex-grow: 1;
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   max-height: 35px;
