@@ -60,11 +60,11 @@ a:hover {
   border-bottom: 1px solid #333333b0;
 }
 
-.main a {
+header a {
   text-decoration: underline
 }
 
-.main a:hover {
+header a:hover {
   border-bottom: none;
   opacity: 0.8;
 }
