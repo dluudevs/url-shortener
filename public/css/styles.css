@@ -112,6 +112,7 @@ header a {
   justify-content: space-between;
   align-items: center;
   max-height: 35px;
+  font-size: 14px;
 }
 
 .short-url-container {

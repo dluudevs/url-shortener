@@ -74,8 +74,8 @@ app.post('/api/shorturl/new', jsonParser, async (req, res) => {
 
 app.get('/shorturl/:id', async (req, res) => {
   try {
-    const { url } = await UrlModel.findOne({ hash: req.params.id })
-    console.log(url)
+    let { url } = await UrlModel.findOne({ hash: req.params.id })
+    url = url.match('https') ? url : `https://${url}`
     res.redirect(url)
   } catch (e) {
     res.status(500).send(e)

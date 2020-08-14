@@ -2,7 +2,7 @@ const url = document.querySelector('#input-url')
 const form = document.querySelector('#form-url')
 const messageUrl = document.querySelector('.message-url')
 const originalUrl = document.querySelector('.original-url')
-const shortUrl = document.querySelector('.short-url a')
+const shortUrl = document.querySelector('.short-url')
 const copyButton = document.querySelector('#copy-button')
 
 form.addEventListener('submit', (e) => {
@@ -15,6 +15,10 @@ form.addEventListener('submit', (e) => {
   })
     .then(data => data.json())
     .then(result => {
+      if(result.error){
+        return url.value = result.error
+      }
+
       originalUrl.innerHTML = url.value
       shortUrl.innerHTML = result.url
       shortUrl.setAttribute('href', result.url)
@@ -31,3 +35,8 @@ copyButton.addEventListener('click', () => {
   document.body.removeChild(el);
 })
 
+url.addEventListener('focus', () => {
+  if(url.value = "Invalid URL"){
+    url.value = ''
+  }
+})
