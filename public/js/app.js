@@ -5,6 +5,9 @@ const originalUrl = document.querySelector('.original-url')
 const shortUrl = document.querySelector('.short-url')
 const copyButton = document.querySelector('#copy-button')
 
+// potential improvement. keep adding new paragraphs below for new links
+// get it to work on Heroku first
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   
