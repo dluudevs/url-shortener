@@ -1,15 +1,14 @@
 require('./db/mongoose.js')
 const express = require('express')
-const bodyParser = require('body-parser')
 const UrlModel = require('./models/url')
+const bodyParser = require('body-parser')
 const dnsPromises = require('dns').promises
 const { default: ShortUniqueId } = require('short-unique-id')
 const hbs = require('hbs')
 const path = require('path')
 
 const app = express()
-const jsonParser = bodyParser.json()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 const publicPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
@@ -18,6 +17,9 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 
 // for css and assets - use method to register middleware
 app.use(express.static(publicPath))
+// use JSON parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 // set viewengine to use HBS - set method registers properties (notice the pair)
 app.set('view engine', 'hbs')
 // render method will look for views in this path
@@ -35,7 +37,7 @@ app.get('/about', (req, res) => {
   res.render('about', { title: 'About'})
 })
 
-app.post('/api/shorturl/new', jsonParser, async (req, res) => {
+app.post('/api/shorturl/new', async (req, res) => {
   const url = req.body.url
   // parse string to get hostname
   let parsedUrl = url.match('https') ? url.replace('https://', '') : url.replace('http://', '')
