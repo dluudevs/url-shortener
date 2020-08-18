@@ -22,9 +22,11 @@ form.addEventListener('submit', (e) => {
         return url.value = result.error
       }
       originalUrl.innerHTML = url.value
-      shortUrl.innerHTML = result.url
+      // will not work in dev environment
+      const link = `https://${result.url}`
+      shortUrl.innerHTML = link
       shortUrl.setAttribute('target', "_blank")
-      shortUrl.setAttribute('href', result.url)
+      shortUrl.setAttribute('href', link)
       messageUrl.style.display = 'flex'
     })
 })
