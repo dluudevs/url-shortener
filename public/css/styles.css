@@ -107,29 +107,34 @@ header a {
 .message-url {
   background-color: white;
   margin-top: 16px;
-  flex-grow: 1;
   display: none;
+  flex-direction: column;
+  flex-grow: 1;
   justify-content: space-between;
   align-items: center;
   /* max-height: 35px; */
   font-size: 14px;
 }
 
+.original-url {
+  flex-basis: 100%;
+}
+
 .short-url-container {
-  flex-grow: 0.3;
+  margin-top: 12px;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column;
 }
 
 .short-url {
   flex-grow: 0.6;
-  margin-right: 12px;
 }
 
 #copy-button {
-  flex-grow: 0.1;
+  flex-grow: 1;
   padding: 4px;
+  margin-top: 6px;
 }
 
 footer { 
@@ -142,4 +147,32 @@ footer {
   display: block;
   max-width: 250px;
   margin-bottom: 12px;
+}
+
+@media (min-width: 620px){
+  .message-url {
+    flex-direction: row;
+  }
+
+  .original-url {
+    flex-basis: 55%;
+  }
+
+  .short-url-container {
+    margin-top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .short-url {
+    flex-grow: 0.6;
+    /* margin-right: 12px; */
+  }
+
+  #copy-button {
+    flex-grow: 0.15;
+    padding: 4px;
+  }
 }

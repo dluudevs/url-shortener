@@ -14,16 +14,15 @@
 <body>
   <div class="main">
     {{>header}}
-    <p>Input a URL and watch it magically become shorter!</p>
     <div class="form-container">
       <form id="form-url">
-        <input id="input-url" class="round-border" placeholder="Shorten URL">
+        <input id="input-url" class="round-border" placeholder="Shorten your link">
         <button class="round-border">Shorten!</button>
       </form>
       <p class="message-url round-border">
         <span class="original-url"></span>
         <span class="short-url-container">
-          <span class="short-url"></span>
+          <span class="short-url"><a></a></span>
           <button id="copy-button" class="round-border">Copy</button>
         </span>
       </p>

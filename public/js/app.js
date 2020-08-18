@@ -2,7 +2,7 @@ const url = document.querySelector('#input-url')
 const form = document.querySelector('#form-url')
 const messageUrl = document.querySelector('.message-url')
 const originalUrl = document.querySelector('.original-url')
-const shortUrl = document.querySelector('.short-url')
+const shortUrl = document.querySelector('.short-url a')
 const copyButton = document.querySelector('#copy-button')
 
 // potential improvement. keep adding new paragraphs below for new links
@@ -17,11 +17,13 @@ form.addEventListener('submit', (e) => {
   })
     .then(data => data.json())
     .then(result => {
+      console.log(result)
       if(result.error){
         return url.value = result.error
       }
       originalUrl.innerHTML = url.value
       shortUrl.innerHTML = result.url
+      shortUrl.setAttribute('target', "_blank")
       shortUrl.setAttribute('href', result.url)
       messageUrl.style.display = 'flex'
     })
