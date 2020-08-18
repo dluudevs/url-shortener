@@ -57,16 +57,15 @@ app.post('/api/shorturl/new', async (req, res) => {
     // queries are async, check if url already exists
     const existingUrl = await UrlModel.findOne({ url })
     const hostname = req.hostname === 'localhost' ? `${req.hostname}:${port}` : req.hostname
-    const shortUrl = `${hostname}/shorturl`
     // if url does not exist, create a new document and save
     if (!existingUrl){
       const uid = new ShortUniqueId() 
       const newUrl = new UrlModel({ url, hash: uid(10) })
       await newUrl.save()
-      res.send({url: `${shortUrl}/${newUrl.hash}`})
+      res.send({url: `${hostname}/${newUrl.hash}`})
     } else {
       // if url exists, send back url
-      res.send({url: `${shortUrl}/${existingUrl.hash}`})
+      res.send({url: `${hostname}/${existingUrl.hash}`})
     }
   } catch (e){
     // status 500 for when there is an error communicating with the server
@@ -74,7 +73,7 @@ app.post('/api/shorturl/new', async (req, res) => {
   }
 })
 
-app.get('/shorturl/:id', async (req, res) => {
+app.get('/:id', async (req, res) => {
   try {
     let { url } = await UrlModel.findOne({ hash: req.params.id })
     url = url.match('https') ? url : `https://${url}`
