@@ -1,5 +1,5 @@
 ## Url-Shortener 
-Requirements:
+__Requirements:__
   1. Entering a URL will return a JSON response with a shortened URL and append it to the DOM
   2. URLs with an invalid domain name will return "Invalid Url" in the JSON response and change the placeholder of the input
   3. Visiting a shortened URL will redirect the client to the original link
